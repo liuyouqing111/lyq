@@ -4,7 +4,7 @@ const verifyParams = (params) => {
 			for (let key in params) {
 				for (let filed in params[key]) {
 					for (let item of params[key][filed]) {
-						item(key, filed, ctx)
+						item(ctx.request[key][filed], filed, ctx)
 					}
 				}
 			}
