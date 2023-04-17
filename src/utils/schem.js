@@ -6,6 +6,20 @@ class Schema {
 			}
 		}
 	}
+	srting() {
+		return (value, filed) => {
+			if (typeof value !== 'string') {
+				throw new Error(`${filed}必须为字符`)
+			}
+		}
+	}
+	number() {
+		return (value, filed) => {
+			if (typeof value !== 'number') {
+				throw new Error(`${filed}必须为数字`)
+			}
+		}
+	}
 	min(num) {
 		return (value, filed) => {
 			if (value.length < num) {

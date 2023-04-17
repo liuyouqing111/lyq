@@ -1,7 +1,7 @@
-const sql = require('mysql2')
+const sql = require('mysql2/promise')
 const config = require('./config')
 
-const connect = sql.createPool({
+const connection = sql.createPool({
 	host: config.MYSQL_HOST,
 	port: config.MYSQL_PORT,
 	user: config.MYSQL_USER,
@@ -9,4 +9,4 @@ const connect = sql.createPool({
 	database: config.MYSQL_DATABASE,
 })
 
-module.exports = connect.promise()
+module.exports = connection

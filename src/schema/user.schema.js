@@ -8,6 +8,14 @@ const registry_schema = {
 	},
 }
 
+const login_schema = {
+	body: {
+		username: [requied()],
+		password: [requied(), min(6), max(20)],
+	},
+}
+
 module.exports = {
 	registry_schema,
+	login_schema,
 }
