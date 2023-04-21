@@ -1,15 +1,10 @@
 const Router = require('koa-router')
-const {
-	gettrend_schema,
-	posttrend_schema,
-	getbyname_schema,
-} = require('../schema/trend.schema')
+const { gettrend_schema, posttrend_schema } = require('../schema/trend.schema')
 const {
 	trendGet,
 	trendPost,
 	trendPut,
 	trendDelete,
-	trendGetByname,
 	trendGetById,
 } = require('../controller/trend.controller')
 const verifyParams = require('../middleware/verifyParams')

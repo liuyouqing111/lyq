@@ -3,7 +3,7 @@ const bodyParser = require('koa-bodyparser')
 const mapRoutes = require('../utils/mapRoutes')
 const verifyToken = require('../middleware/verifyToken')
 const Koastatic = require('koa-static')
-const swagger = require('../swagger/index')
+// const swagger = require('../swagger/index')
 const cors = require('@koa/cors')
 const { resolve } = require('path')
 
@@ -37,7 +37,7 @@ app.use(
 )
 // 批量注册路由
 mapRoutes(app)
-app.use(swagger.routes())
+// app.use(swagger.routes())
 
 //错误监听
 app.on('error', (message, ctx) => {

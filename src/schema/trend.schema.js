@@ -20,12 +20,6 @@ const posttrend_schema = {
 	},
 }
 
-const getbyname_schema = {
-	query: {
-		name: [],
-	},
-}
-
 module.exports = {
 	gettrend_schema,
 	posttrend_schema,
