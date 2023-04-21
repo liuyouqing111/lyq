@@ -7,6 +7,12 @@ const gettrend_schema = {
 	},
 }
 
+const gettrend_schema_byid = {
+	query: {
+		trendId: [requied()],
+	},
+}
+
 const posttrend_schema = {
 	body: {
 		title: [requied()],
@@ -14,7 +20,14 @@ const posttrend_schema = {
 	},
 }
 
+const getbyname_schema = {
+	query: {
+		name: [],
+	},
+}
+
 module.exports = {
 	gettrend_schema,
 	posttrend_schema,
+	gettrend_schema_byid,
 }
