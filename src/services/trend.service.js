@@ -2,7 +2,7 @@ const connection = require('../app/database')
 
 const baseStatement = `SELECT trends.id id,trends.title title,trends.content content,trends.createAt createAt,
 trends.updateAt updateAt,
-JSON_OBJECT('id',users.id,'username',users.username,'nickname',users.nickname) author,
+JSON_OBJECT('id',users.id,'username',users.username,'nickname',users.nickname,'avatarId',users.avatar_id) author,
 (SELECT COUNT(*) FROM commont WHERE trend_id = trends.id) commontsCount
 FROM trends LEFT JOIN user_trend ON trends.id
 = user_trend.trend_id LEFT JOIN users ON user_trend.user_id 

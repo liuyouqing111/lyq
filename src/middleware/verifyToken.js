@@ -2,7 +2,10 @@ const jwt = require('jsonwebtoken')
 const getKey = require('../utils/getKey')
 const verifyToken = (whitelists) => {
 	return async (ctx, next) => {
-		if (whitelists.includes(ctx.request.url)) {
+		if (
+			whitelists.includes(ctx.request.url) ||
+			ctx.request.url.indexOf('/upload/download/') !== -1
+		) {
 			await next()
 		} else {
 			const token = ctx.request.headers.token

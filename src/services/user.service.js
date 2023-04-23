@@ -25,9 +25,19 @@ class UserService {
 		}
 	}
 	async getUserInfo(username) {
-		const statement = `SELECT id,username,nickname FROM users WHERE username = ?;`
+		const statement = `SELECT id,username,nickname,avatar_id FROM users WHERE username = ?;`
 		const [result] = await connection.execute(statement, [username])
 		return result[0]
+	}
+
+	async updateUser(userId, nickname, avatarId) {
+		const statement = `UPDATE users SET nickname =?,avatar_id =? WHERE id =?;`
+		const [result] = await connection.execute(statement, [
+			nickname,
+			avatarId,
+			userId,
+		])
+		return result
 	}
 }
 

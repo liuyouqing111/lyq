@@ -26,15 +26,7 @@ app.use(async (ctx, next) => {
 	await next()
 })
 
-app.use(
-	verifyToken([
-		'/user/registry',
-		'/user/login',
-		'/jsons/swagger.json',
-		'/swagger',
-		'/styles.css',
-	])
-)
+app.use(verifyToken(['/user/registry', '/user/login', '/swagger']))
 // 批量注册路由
 mapRoutes(app)
 // app.use(swagger.routes())

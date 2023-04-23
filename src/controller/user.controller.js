@@ -39,6 +39,12 @@ class UserController {
 		const result = await service.getUserInfo(ctx.user.username)
 		ctx.success('获取个人信息成功', result)
 	}
+	async userUpdate(ctx, next) {
+		const userId = ctx.user.id
+		const { nickname, avatarId } = ctx.request.body
+		await service.updateUser(userId, nickname, avatarId)
+		ctx.success('修改个人信息成功')
+	}
 }
 
 module.exports = new UserController()
