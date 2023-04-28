@@ -3,7 +3,7 @@ class CommentService {
 	async getComment(trendId) {
 		const statement = `SELECT c.id id,c.content content,c.createAt createTime,c.updateAt updateTime,
     JSON_OBJECT('id',u.id,'username',u.username,'nickname',u.nickname,'avatarId',u.avatar_id) user
-        FROM commont c LEFT JOIN users u ON c.user_id = u.id WHERE c.trend_id = ? AND c.commont_id IS NULL;
+        FROM commont c LEFT JOIN users u ON c.user_id = u.id WHERE c.trend_id = ? AND c.commont_id IS NULL ORDER BY c.createAt DESC;
     `
 		const [result] = await connection.execute(statement, [trendId])
 		return result
@@ -12,7 +12,7 @@ class CommentService {
 	async getChildComment(commontId) {
 		const statement = `SELECT c.id id,c.content content,
     JSON_OBJECT('id',u.id,'username',u.username,'avatarId',u.avatar_id,'nickname',u.nickname) user,c.createAt createTime,c.updateAt updateTime 
-    FROM commont c LEFT JOIN users u ON c.user_id = u.id WHERE c.commont_id = ?;`
+    FROM commont c LEFT JOIN users u ON c.user_id = u.id WHERE c.commont_id = ? ORDER BY c.createAt DESC;`
 		const [result] = await connection.execute(statement, [commontId])
 		return result
 	}
